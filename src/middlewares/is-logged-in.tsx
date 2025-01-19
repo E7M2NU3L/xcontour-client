@@ -1,10 +1,11 @@
+import { useAuth } from '@/hooks/use-auth';
 import {Outlet, Navigate} from 'react-router-dom'
 
 const IsLoggedin = () => {
-    const session = true;
+    const {userInfo} = useAuth();
     return (
         <div>
-            {session ? <Outlet /> : <Navigate to="/login" />}
+            {userInfo?.data?.user?.email ? <Outlet /> : <Navigate to="/login" />}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { ChartAreaIcon, Edit, FlagTriangleRight, LogOut } from "lucide-react"
+import { ChartAreaIcon, Edit, FlagTriangleRight, LayoutTemplate, LogOut } from "lucide-react"
 import {Link} from 'react-router-dom'
 import {
   Sidebar,
@@ -16,7 +16,6 @@ import { ThemeSwitch } from "./theme-switch";
 import ProfileCard from "./profile-card";
 import LogoutDrawer from "./logout-drawer";
 import { Button } from "../ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 // Menu items.
 const items = [
@@ -30,6 +29,11 @@ const items = [
     url: "/progress",
     icon: FlagTriangleRight,
   },
+  {
+    title : "Templates",
+    url : "/templates",
+    icon : LayoutTemplate
+  }
 ];
 
 const overview = [
@@ -44,7 +48,10 @@ export function AppSidebar() {
   return (
     <Sidebar>
         <SidebarHeader>
-
+        <Link to={"/"} className="flex flex-row items-center gap-2">
+          <img src="/logo.png" className="w-12 h-12 object-contain" alt="logo" />
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">XCon<span className="text-primary">tour</span></h1>
+        </Link>
         </SidebarHeader>
         <SidebarContent>
             <SidebarGroup>
@@ -86,18 +93,9 @@ export function AppSidebar() {
             <ThemeSwitch />
             <ProfileCard />
             <LogoutDrawer>
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button variant={"destructive"} size={"icon"}>
-                                <LogOut />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Logout
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                <Button variant={"destructive"} size={"icon"}>
+                    <LogOut />
+                </Button>
             </LogoutDrawer>
         </SidebarFooter>
     </Sidebar>

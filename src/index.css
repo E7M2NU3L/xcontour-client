@@ -97,4 +97,114 @@
   body {
     @apply bg-background text-foreground;
   }
+  .stage-draft {
+    @apply bg-yellow-400;
+  }
+  .stage-pending {
+    @apply bg-orange-400;
+  }
+  .stage-approved {
+    @apply bg-green-500;
+  }
+  .stage-active {
+    @apply bg-green-700;
+  }
+  .stage-amendment {
+    @apply bg-blue-500;
+  }
+  .stage-completed {
+    @apply bg-indigo-700;
+  }
+  .stage-expired {
+    @apply bg-gray-500;
+  }
+  .stage-terminated {
+    @apply bg-red-500;
+  }
+
+  /* Stage-specific text classes */
+  .text-draft {
+    @apply text-yellow-600;
+  }
+  .text-pending {
+    @apply text-orange-600;
+  }
+  .text-approved {
+    @apply text-green-600;
+  }
+  .text-active {
+    @apply text-green-800;
+  }
+  .text-amendment {
+    @apply text-blue-600;
+  }
+  .text-completed {
+    @apply text-indigo-800;
+  }
+  .text-expired {
+    @apply text-gray-600;
+  }
+  .text-terminated {
+    @apply text-red-600;
+  }
+
+   /* Badge Colors */
+   .badge-draft {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  .badge-pending {
+    @apply bg-orange-100 text-orange-800;
+  }
+  .badge-approved {
+    @apply bg-green-100 text-green-800;
+  }
+  .badge-active {
+    @apply bg-green-200 text-green-900;
+  }
+  .badge-amendment {
+    @apply bg-blue-100 text-blue-800;
+  }
+  .badge-completed {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+  .badge-expired {
+    @apply bg-gray-100 text-gray-800;
+  }
+  .badge-terminated {
+    @apply bg-red-100 text-red-800;
+  }
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  line-height: 1.1;
+  text-wrap: pretty;
+}
+
+h1 { 
+  font-size: 1.4rem; 
+}
+
+h2 { 
+  font-size: 1.2rem; 
+}
+
+h3 { 
+  font-size: 1.1rem; 
+}
+
+h4 { 
+  font-size: 1rem; 
+}
+
+h5 {
+  font-size: 0.7rem;
+}
+
+h6 {
+  font-size: 0.5rem;
 }

@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { ThemeProvider } from './providers/theme-provider.tsx'
 import ViteReduxProvider from './providers/vite-redux-provider.tsx'
 import ViteQueryProvider from './providers/vite-query-provider.tsx'
+import { Toaster } from './components/ui/toaster.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
           <ViteQueryProvider>
             <div>
               <App />
+              <Toaster />
             </div>
           </ViteQueryProvider>
         </ViteReduxProvider>

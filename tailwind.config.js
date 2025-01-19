@@ -2,6 +2,33 @@
 module.exports = {
     darkMode: ["class"],
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+	safelist: [
+		// Stage-specific background and text classes
+		'stage-draft',
+		'stage-pending',
+		'stage-approved',
+		'stage-active',
+		'stage-amendment',
+		'stage-completed',
+		'stage-expired',
+		'stage-terminated',
+		'text-draft',
+		'text-pending',
+		'text-approved',
+		'text-active',
+		'text-amendment',
+		'text-completed',
+		'text-expired',
+		'text-terminated',
+		'badge-draft',
+		'badge-pending',
+		'badge-approved',
+		'badge-active',
+		'badge-amendment',
+		'badge-completed',
+		'badge-expired',
+		'badge-terminated',
+	  ],
   theme: {
   	extend: {
   		borderRadius: {

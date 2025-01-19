@@ -19,6 +19,11 @@ import Main from "./layouts/main"
 import Overview from "./routes/dashboard/overview"
 import Editor from "./routes/dashboard/editor"
 import Progress from "./routes/dashboard/progress"
+import DeleteUser from "./routes/auth/delete-user"
+import Templates from "./routes/dashboard/templates"
+import CreateContract from "./routes/dashboard/create-contract"
+import UpdateContract from "./routes/dashboard/update-contract"
+import UseTemplate from "./routes/dashboard/use-template"
 
 function App() {
   return (
@@ -43,12 +48,17 @@ function App() {
               <Route path="/verify-otp" element={<VerifyOtp />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/verify-user" element={<VerifyUser />} />
+              <Route path="/delete-user" element={<DeleteUser />} />
             </Route>  
 
             <Route element={<Main />}>
               <Route path="/overview" element={<Overview />} />
               <Route path="/edit" element={<Editor />} />
               <Route path="/progress" element={<Progress />} />
+              <Route path="/templates" element={<Templates />} />
+              <Route path="/edit/new-document" element={<CreateContract />} /> 
+              <Route path="/edit/update-document/:id" element={<UpdateContract />} />
+              <Route path="/templates/use-template/:id" element={<UseTemplate />} /> 
             </Route>
         </Routes>
       </BrowserRouter>
