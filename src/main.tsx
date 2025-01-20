@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <ViteReduxProvider>
           <ViteQueryProvider>
-            <div>
+            <div className='overflow-x-hidden'>
               <App />
               <Toaster />
             </div>
