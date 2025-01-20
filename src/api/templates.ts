@@ -4,7 +4,7 @@ import axios from "axios";
 
 export async function createTemplate(values : createTemplateTypes) {
     try {
-        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/";
+        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/api/v1/templates/create";
         const response = await axios.post(endpoint, values, {
             withCredentials : true
         });
@@ -21,7 +21,7 @@ export async function createTemplate(values : createTemplateTypes) {
 
 export async function FetchAllPublicTemplates() {
     try {
-        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/";
+        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/api/v1/templates/public";
         const response = await axios.get(endpoint, {
             withCredentials : true
         });
@@ -38,7 +38,7 @@ export async function FetchAllPublicTemplates() {
 
 export async function DeleteTemplates(id : string) {
     try {
-        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + `/${id}`;
+        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + `/api/v1/templates/delete/${id}`;
         const response = await axios.delete(endpoint, {
             withCredentials : true
         });
@@ -55,7 +55,7 @@ export async function DeleteTemplates(id : string) {
 
 export async function FetchSingleTemplate(id : string) {
     try {
-        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + `/${id}`;
+        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + `/api/v1/templates/single/${id}`;
         const response = await axios.get(endpoint, {
             withCredentials : true
         });
@@ -72,8 +72,8 @@ export async function FetchSingleTemplate(id : string) {
 
 export async function FetchUserTemplates() {
     try {
-        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/";
-        const response = await axios.post(endpoint, {
+        const endpoint = import.meta.env.VITE_PUBLIC_API_ENDPOINT + "/api/v1/templates/all";
+        const response = await axios.get(endpoint, {
             withCredentials : true
         });
 

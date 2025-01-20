@@ -3,25 +3,27 @@ import PreviewContract from "../contracts/preview-contract"
 import { Button } from "../ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
 import DeleteTemplate from "./delete-template"
-import { htmlContractContent } from "./template-cards"
 import { PenLine } from "lucide-react"
+import { TemplateProps } from "@/types/templates"
 
-const CustomTemplateCards = () => {
+const CustomTemplateCards = ({content} : {
+    content : TemplateProps
+}) => {
   return (
     <Card>
         <CardHeader>
             <CardTitle>
-                Template sample title
+                {content.title}
             </CardTitle>
-            <CardDescription>
-                Template Sample Description about the description, no fighting, n fucking fighting, i said no fighting
+            <CardDescription className="line-clamp-2">
+                {content.description}
             </CardDescription>
         </CardHeader>
         <CardFooter className="w-full flex flex-row items-center justify-end gap-3">
-            <PreviewContract contractDetails={htmlContractContent} />
+            <PreviewContract contractDetails={content.displayContent} />
             <DeleteTemplate />
             <Button size={"sm"} asChild>
-                <Link to={"/templates/use-template/123"}>
+                <Link to={`/templates/use-template/${content._id}`}>
                     <PenLine className="h-4 w-4 mr-1" />
                     use
                 </Link>

@@ -3,6 +3,7 @@ import PreviewContract from "../contracts/preview-contract"
 import { Button } from "../ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
 import { PenLine } from "lucide-react"
+import { TemplateProps } from "@/types/templates"
 
 export const htmlContractContent = 
     `<section class="bg-gray-100 font-sans">
@@ -69,27 +70,29 @@ export const htmlContractContent =
         </div>
     </section>`
 
-const TemplateCards = () => {
+const TemplateCards = ({content} : {
+    content : TemplateProps
+}) => {
   return (
     <Card>
         <CardHeader>
             <CardTitle>
-                Template Heading
+                {content.title}
             </CardTitle>
             <CardDescription className="line-clamp-2">
-                Random description about the template, about the template lorem ipsum
+                {content.description}
             </CardDescription>
         </CardHeader>
 
-        <CardContent className="overflow-hidden h-[20vh] border border-input">
+        <CardContent className="overflow-hidden h-[20vh] border border-input bg-gradient-to-tr from-slate-100 py-2 to-slate-200">
             <div dangerouslySetInnerHTML={{
-                __html :htmlContractContent
+                __html :content.displayContent
             }} />
         </CardContent>
         <CardFooter className="w-full flex flex-row items-center gap-3 justify-end mt-4">
-            <PreviewContract contractDetails={htmlContractContent} />
+            <PreviewContract contractDetails={content.content} />
             <Button size={"sm"} asChild>
-                <Link to={"/templates/use-template/123"}>
+                <Link to={`/templates/use-template/${content._id}`}>
                     <PenLine className="h-4 w-4 mr-1" />
                     use
                 </Link>

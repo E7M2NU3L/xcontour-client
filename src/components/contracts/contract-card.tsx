@@ -5,25 +5,28 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Pen } from "lucide-react"
 import DeleteContract from "./delete-contract"
 import { Link } from "react-router-dom"
+import { Contract } from "@/types/contracts"
 
-const ContractCard = () => {
+const ContractCard = ({content} : {
+    content : Contract
+}) => {
   return (
     <Card>
         <CardHeader>
             <CardTitle>
-                Sample Contract Title
+                {content?.title}
             </CardTitle>
             <CardDescription className="items-center">
-                Contract made for - <Button variant={"link"} size={"sm"}>John Doe</Button>
+                Contract made for - <Button variant={"link"} size={"sm"}>{content?.clientName}</Button>
             </CardDescription>
         </CardHeader>
 
         <CardFooter className="flex justify-end items-center gap-3 w-full flex-row">
-            <PreviewContract contractDetails="" />
+            <PreviewContract contractDetails={content?.versions[content.versions.length - 1].content} />
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Link to={"/edit/update-document/123"}>
+                        <Link to={`/edit/update-document/${content?._id}`}>
                         <Button variant={"default"} size={"sm"}>
                             <Pen />
                         </Button>
@@ -34,7 +37,7 @@ const ContractCard = () => {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
-            <DeleteContract />
+            <DeleteContract id={content?._id}/>
         </CardFooter>
     </Card>
   )

@@ -2,7 +2,9 @@ import { ChartColumnDecreasing, ChartColumnIncreasing } from "lucide-react"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
 import {motion} from 'framer-motion';
 
-const TitleCards = () => {
+const TitleCards = ({content} : {
+  content : any
+}) => {
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       <motion.section
@@ -22,7 +24,7 @@ const TitleCards = () => {
         <main className="flex justify-between items-center w-full pr-4">
         <CardHeader>
           <CardTitle className="text-3xl font-semibold text-foreground tracking-tight">
-            12
+            {content?.data?.totalContracts}
           </CardTitle>
           <CardDescription>
             Total contracts
@@ -58,7 +60,7 @@ const TitleCards = () => {
         <main className="flex justify-between items-center w-full pr-4">
           <CardHeader>
             <CardTitle className="text-3xl font-semibold text-foreground tracking-tight">
-              80
+              {content?.data?.activeContracts}
             </CardTitle>
             <CardDescription>
               Active Contracts
@@ -94,10 +96,10 @@ const TitleCards = () => {
         <main className="flex justify-between items-center w-full pr-4">
           <CardHeader>
             <CardTitle className="text-3xl font-semibold text-foreground tracking-tight">
-              2
+              {content?.data?.draftContracts}
             </CardTitle>
             <CardDescription>
-              Active Contracts
+              Drafted Contracts
             </CardDescription>
           </CardHeader>
 
@@ -130,7 +132,7 @@ const TitleCards = () => {
         <main className="flex justify-between items-center w-full pr-4">
           <CardHeader>
             <CardTitle className="text-3xl font-semibold text-foreground tracking-tight">
-              15
+              {content?.data?.userTemplates}
             </CardTitle>
             <CardDescription>
               Templates Used

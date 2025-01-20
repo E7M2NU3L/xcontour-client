@@ -17,14 +17,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
 
 const chartConfig = {
   desktop: {
@@ -33,18 +25,20 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function TraackingChart() {
+export function TraackingChart({content} : {
+  content : any
+}) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Horizontal</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>App Reach</CardTitle>
+        <CardDescription>Usage of our application with the users</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={content?.data?.chartData}
             layout="vertical"
             margin={{
               left: -20,

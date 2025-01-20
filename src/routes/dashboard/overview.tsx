@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 const Overview = () => {
   const {overviewStats, isFetchingOverviewStats} = UseOverview();
+  console.log("Overview Stats: ", overviewStats);
   const authInfo = useSelector((state : RootState) => state.auth);
   console.log(authInfo);
   return (
@@ -42,7 +43,7 @@ const Overview = () => {
       )}
       {overviewStats && (
         <main className="mt-6">
-        <TitleCards />
+        <TitleCards content={overviewStats} />
         <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           <motion.div
             initial={{
@@ -57,7 +58,7 @@ const Overview = () => {
               }
             }}
           >
-          <TraackingChart />
+          <TraackingChart content={overviewStats} />
           </motion.div>
   
           <motion.div
@@ -73,7 +74,7 @@ const Overview = () => {
               }
             }}
           >
-            <SummaryChart />
+            <SummaryChart content={overviewStats} />
           </motion.div>
           
           <motion.div
@@ -89,7 +90,7 @@ const Overview = () => {
               }
             }}
           >
-          <WeeklyContracts />
+          <WeeklyContracts content={overviewStats}/>
           </motion.div>
         </main>
         </main>

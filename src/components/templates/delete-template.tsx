@@ -1,23 +1,32 @@
 import { Button } from '@/components/ui/button'
 import { DialogClose } from '@/components/ui/dialog'
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
+import { useTemplatesHook } from '@/hooks/use-templates'
 import { toast } from '@/hooks/use-toast'
 import { AppErr } from '@/utils/app-err'
 import { Loader, Trash } from 'lucide-react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 const DeleteTemplate = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [loading, isLoading] = useState<boolean>(false);
+    const {DeleteTemplateMutation} = useTemplatesHook();
+    const {id} = useParams();
     async function HandleDeleteContract() {
         try {
             isLoading(true);
-            
-            toast({
-                title : "Success",
-                description : "the template has been deleted successfully",
-                variant : "default"
-            });
+            if (id) {
+                const response = await DeleteTemplateMutation.mutateAsync(id);
+
+                if (response?.message) {
+                    toast({
+                        title : "Success",
+                        description : "the template has been deleted successfully",
+                        variant : "default"
+                    });
+                }
+            };
         } catch (error) {
             AppErr(error);
         } finally {

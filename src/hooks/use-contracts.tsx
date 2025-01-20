@@ -1,6 +1,8 @@
 import { CreateContracts, DeleteContract, FetchContracts, FetchContractsByStatus, UpdateContract, UpdateStatus } from "@/api/contracts"
-import { CreateContractTypes, UpdateContractApiTypes, UpdateStatusTypes } from "@/types/contracts";
+import { CreateContractApiSchema } from "@/schemas/contracts";
+import { CreateContractTypes, UpdateContractApiTypes, updateContractstatusTypes, UpdateStatusTypes } from "@/types/contracts";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { z } from "zod";
 
 export const useContract = () => {
     const queryclient = useQueryClient();
@@ -16,7 +18,7 @@ export const useContract = () => {
     });
 
     const UpdateContractStatusMutation = useMutation({
-        mutationFn : (values : UpdateStatusTypes) => UpdateStatus(values),
+        mutationFn : (values : updateContractstatusTypes) => UpdateStatus(values),
         mutationKey : ['update-status'],
         onSuccess : () => {
             queryclient.invalidateQueries({
@@ -27,13 +29,16 @@ export const useContract = () => {
 
     const DeleteContractMutation = useMutation({
         mutationFn : (id : string) => DeleteContract(id),
-        mutationKey : ['delete-contract'],
+        mutationKey : ['delete-contracts'],
         onSuccess : () => {
             queryclient.invalidateQueries({
                 queryKey : [
                     'fetch-all-contracts'
                 ]
             })
+        },
+        onMutate : () => {
+            console.log("deleting the contracts")
         }
     });
 
@@ -50,7 +55,7 @@ export const useContract = () => {
     });
 
     const CreateContractMutation = useMutation({
-        mutationFn : (values : CreateContractTypes) => CreateContracts(values),
+        mutationFn : (values : z.infer<typeof CreateContractApiSchema>) => CreateContracts(values),
         mutationKey : ['create-contracts'],
         onSuccess : () => {
             queryclient.invalidateQueries({

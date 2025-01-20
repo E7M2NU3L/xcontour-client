@@ -6,9 +6,11 @@ import { Link } from "react-router-dom"
 import ContractCard from "../../components/contracts/contract-card"
 import {motion} from 'framer-motion';
 import { useContract } from "@/hooks/use-contracts"
+import { Contract } from "@/types/contracts"
 
 const Editor = () => {
   const {isContractsFetching, contracts} = useContract();
+  console.log(contracts);
   return (
     <div className="p-4">
       <motion.main
@@ -81,9 +83,10 @@ const Editor = () => {
       )}
 
       <main className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-          {[0,1,2,3,4].map((content, index) => (
+          {contracts?.data.map((content : Contract, index : number) => (
+            <>
             <motion.div
-            key={content}
+            key={index}
               initial={{
                 y : 50,
                 opacity : 0,
@@ -96,8 +99,9 @@ const Editor = () => {
                 }
               }}
             >
-              <ContractCard />
+              <ContractCard content={content as Contract} />
             </motion.div>
+            </>
           ))}
       </main>
     </div>

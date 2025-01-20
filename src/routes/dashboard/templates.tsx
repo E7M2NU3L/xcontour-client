@@ -3,10 +3,16 @@ import TemplateCards from '@/components/templates/template-cards';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import { useTemplatesHook } from '@/hooks/use-templates';
+import { TemplateProps } from '@/types/templates';
 import {motion} from 'framer-motion';
 import { Search } from 'lucide-react';
 
 const Templates = () => {
+  const {userTemplates, isFetchingUserTemplates, publicTemplates, isFetchingPublicTemplates} = useTemplatesHook();
+
+  console.log(publicTemplates);
+  console.log(userTemplates);
   return (
     <div className="p-4">
         <main className='min-h-[50vh] w-full'>
@@ -41,9 +47,9 @@ const Templates = () => {
         </main>
 
         <main className='my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-          {[0,1,2,3,4].map((content, index) => (
+          {userTemplates?.data.map((content : TemplateProps, index : number) => (
             <motion.div
-            key={content}
+            key={index}
               initial={{
                 y : 50,
                 opacity : 0
@@ -60,7 +66,7 @@ const Templates = () => {
                 scale: 1.05,
               }}
             >
-              <CustomTemplateCards />
+              <CustomTemplateCards content={content} />
             </motion.div>
           ))}
         </main>
@@ -100,9 +106,9 @@ const Templates = () => {
         </main>
 
         <main className='my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-          {[0,1,2,3,4].map((content, index) => (
+          {publicTemplates?.publicTemp.map((content : TemplateProps, index : number) => (
             <motion.div
-            key={content}
+            key={index}
               initial={{
                 y : 50,
                 opacity : 0
@@ -119,7 +125,7 @@ const Templates = () => {
                 scale: 1.05,
               }}
             >
-              <TemplateCards />
+              <TemplateCards content={content} />
             </motion.div>
           ))}
         </main>

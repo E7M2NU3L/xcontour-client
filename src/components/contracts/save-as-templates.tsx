@@ -9,7 +9,7 @@ import { AppErr } from "@/utils/app-err"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { Alert, AlertDescription } from "../ui/alert"
 import { toast } from "@/hooks/use-toast"
 import { useState } from "react"
 import { useTemplatesHook } from "@/hooks/use-templates"
@@ -96,12 +96,9 @@ const SaveAsTemplates = ({contractContent} : {
                     )} />
 
                     <Alert>
-                        <AlertTitle>
-                            Custom Template
-                        </AlertTitle>
-                        <AlertDescription className="line-clamp-2">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </AlertDescription>
+                        <AlertDescription className="line-clamp-2" dangerouslySetInnerHTML={{
+                            __html : contractContent
+                        }} />
                     </Alert>
 
                     <DialogFooter className="flex flex-row w-full justify-end items-center gap-3">

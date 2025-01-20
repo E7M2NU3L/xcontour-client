@@ -16,10 +16,10 @@ const PreviewContract = ({contractDetails} : {
         <DialogContent>
             <DialogHeader>
                 <DialogTitle>
-                    Sample Contract Title
+                    Preview of the Contract
                 </DialogTitle>
                 <DialogDescription>
-                    Sample contract description for the contract description
+                    There are much more features and functionality to be released on second versions.
                 </DialogDescription>
             </DialogHeader>
 

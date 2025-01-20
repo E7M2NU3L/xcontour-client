@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { toast } from "@/hooks/use-toast"
 import { useContract } from "@/hooks/use-contracts"
+import { CreateContractTypes } from "@/types/contracts"
 
 const SaveAsDraft = ({contractContent} : {
-    contractContent : string
+    contractContent : CreateContractTypes
 }) => {
     const navigate = useNavigate();
     const {CreateContractMutation} = useContract();
@@ -17,10 +18,12 @@ const SaveAsDraft = ({contractContent} : {
             setisLoading(true);
             console.log(contractContent);
 
-            const response = {
-                data : true,
-            };
-            if (response?.data) {
+            const response = await CreateContractMutation.mutateAsync({
+                ...contractContent,
+                status : 'Draft'
+            });
+
+            if (response?.message) {
                 toast({
                     title : "Success",
                     description : "Contract is saved as draft"

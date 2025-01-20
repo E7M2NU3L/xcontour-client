@@ -6,7 +6,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useAuth } from "@/hooks/use-auth"
-import { CreateContractsSchema } from "@/schemas/contracts"
+import { CreateContractApiSchema, CreateContractsSchema } from "@/schemas/contracts"
 import { CreateContractTypes } from "@/types/contracts"
 import { AppErr } from "@/utils/app-err"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -26,7 +26,7 @@ const CreateContract = () => {
             title : "",
             clientName : "",
             participants : [userInfo?.data.user._id],
-            contract : ""
+            content : ""
         }
     });
 
@@ -35,12 +35,22 @@ const CreateContract = () => {
     const onSubmit = async (values : CreateContractTypes) => {
         try {
             console.log(values);
-            const response = await CreateContractMutation.mutateAsync(values);
+            const payload = {
+                status : 'Pending Approval',
+                ...values
+            };
+            const parsedPayload = await CreateContractApiSchema.safeParseAsync(payload);
+
+            if (parsedPayload.error) {
+                throw new Error(parsedPayload.error.message);
+            }
+
+            const response = await CreateContractMutation.mutateAsync(parsedPayload.data);
 
             if (response) {
                 toast({
                     title : "Success",
-                    description : "Contract has been created : mode - active",
+                    description : "Contract has been created : mode - Pending",
                     variant : "default"
                 });
                 navigate("/edit");
@@ -48,6 +58,13 @@ const CreateContract = () => {
         } catch (error) {
             AppErr(error);
         }
+    };
+
+    const content = {
+        title : form.getValues('title'),
+        content : form.getValues('content'),
+        participants : [userInfo?.data.user._id],
+        clientName : form.getValues('clientName')
     };
 
   return (
@@ -63,13 +80,13 @@ const CreateContract = () => {
         </section>
 
         <main className="flex flex-row items-center gap-3 flex-wrap">
-            <SaveAsTemplates contractContent={form.getValues('contract')} />
-            <SaveAsDraft contractContent={form.getValues('contract')} />
-            <PreviewContract contractDetails={form.getValues('contract')} />
+            <SaveAsTemplates contractContent={form.getValues('content')} />
+            <SaveAsDraft contractContent={content} />
+            <PreviewContract contractDetails={form.getValues('content')} />
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Button size={"sm"} variant={"default"}>
+                        <Button size={"sm"} variant={"default"} onClick={() => form.handleSubmit(onSubmit)()}>
                             <Check />
                         </Button>
                     </TooltipTrigger>
@@ -99,7 +116,7 @@ const CreateContract = () => {
                     </FormItem>
                 )} />
 
-                <FormField control={form.control} name="title" render={({field}) => (
+                <FormField control={form.control} name="clientName" render={({field}) => (
                     <FormItem>
                         <FormLabel>
                             Client for contract
@@ -115,7 +132,7 @@ const CreateContract = () => {
                 )} />
             </main>
 
-            <FormField control={form.control} name="contract" render={({field}) => (
+            <FormField control={form.control} name="content" render={({field}) => (
                     <FormItem>
                         <FormLabel>
                             Contract - Edit
