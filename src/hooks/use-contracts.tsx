@@ -1,6 +1,6 @@
 import { CreateContracts, DeleteContract, FetchContracts, FetchContractsByStatus, UpdateContract, UpdateStatus } from "@/api/contracts"
 import { CreateContractApiSchema } from "@/schemas/contracts";
-import { CreateContractTypes, UpdateContractApiTypes, updateContractstatusTypes, UpdateStatusTypes } from "@/types/contracts";
+import {  UpdateContractApiTypes, updateContractstatusTypes } from "@/types/contracts";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { z } from "zod";
 

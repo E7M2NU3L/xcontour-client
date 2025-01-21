@@ -46,7 +46,7 @@ const Marketing = () => {
             </section>
         </section>
         <section>
-            <img src={"/image-4.png"} alt='' width={500} height={500} />
+            <img src={"/image (1).svg"} alt='' width={500} height={500} />
         </section>
     </div>
   )

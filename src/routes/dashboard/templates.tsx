@@ -9,7 +9,7 @@ import {motion} from 'framer-motion';
 import { Search } from 'lucide-react';
 
 const Templates = () => {
-  const {userTemplates, isFetchingUserTemplates, publicTemplates, isFetchingPublicTemplates} = useTemplatesHook();
+  const {userTemplates, publicTemplates} = useTemplatesHook();
 
   console.log(publicTemplates);
   console.log(userTemplates);

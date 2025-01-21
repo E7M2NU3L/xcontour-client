@@ -14,30 +14,35 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { useContract } from "@/hooks/use-contracts"
 import { Contract, ContractsResponse } from "@/types/contracts"
-import { zodResolver } from "@hookform/resolvers/zod"
+// import { zodResolver } from "@hookform/resolvers/zod"
 import { Box, Video } from "lucide-react"
 import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
+// import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
-import { z } from "zod"
+// import { z } from "zod"
 
+/*
 const contractSelectedSchema = z.object({
   _id : z.string()
 });
+*/
 
-type contractSelectedType = z.infer<typeof contractSelectedSchema>;
+// type contractSelectedType = z.infer<typeof contractSelectedSchema>;
 
 const Progress = () => {
   const {contractsStatusInfo, isContractsWithStatusFetching} = useContract();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const form = useForm<contractSelectedType>({
+  {/*
+     const form = useForm<contractSelectedType>({
     mode : "onChange",
     resolver : zodResolver(contractSelectedSchema),
     defaultValues : {
       _id : ""
     }
   });
+    */}
+ 
 
   const [parseData, setParseData] = useState<Contract | null>(null);
   const filterData = () => {
@@ -121,8 +126,8 @@ const Progress = () => {
 
         {isContractsWithStatusFetching && (
           <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-ols-3 lg:grid-cols-4 gap-4">
-            {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((content, index : number) => (
-              <Card key={index}>
+            {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((content) => (
+              <Card key={content}>
                 <CardHeader>
                   <CardTitle>
                     <Skeleton className="h-8 w-[10vh]" />

@@ -1,5 +1,5 @@
 import { CreateContractApiSchema } from "@/schemas/contracts";
-import { UpdateContractApiTypes, updateContractstatusTypes, UpdateStatusTypes } from "@/types/contracts";
+import { UpdateContractApiTypes, updateContractstatusTypes } from "@/types/contracts";
 import { AppErr } from "@/utils/app-err";
 import axios from "axios";
 import { z } from "zod";

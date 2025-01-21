@@ -13,7 +13,7 @@ const Customise = () => {
       <section className='flex justify-center items-center gap-x-[8vh] flex-wrap gap-y-[2rem] md:gap-y-0 px-[1rem] md:px-0'>
         <main className='min-h-[20vh] max-w-md'>
           <main className='w-full h-[50%]'>
-            <img src="/image-1.png" alt='placeholder' className='h-[300px] w-full shadow-md' />
+            <img src="/image (3).png" alt='placeholder' className='h-[300px] w-full shadow-md' />
           </main>
           <section className='flex flex-col justify-start items-start text-start'>
             <h1 className='font-medium text-2xl md:text-4xl text-black py-[1.5rem]'>
@@ -30,7 +30,7 @@ const Customise = () => {
         </main>
         <main className='min-h-[20vh] max-w-md'>
           <main className='w-full h-[50%]'>
-            <img src="/image-1.png" alt='placeholder' className='h-[300px] w-full shadow-md' />
+            <img src="/image (1).png" alt='placeholder' className='h-[300px] w-full shadow-md' />
           </main>
           <section className='flex flex-col justify-start items-start text-start'>
           <h1 className='font-medium text-2xl md:text-4xl text-black py-[1.5rem]'>
@@ -47,7 +47,7 @@ const Customise = () => {
         </main>
         <main className='min-h-[20vh] max-w-md'>
           <main className='w-full h-[50%]'>
-            <img src="/image-1.png" alt='placeholder' className='h-[300px] w-full shadow-md' />
+            <img src="/image (2).png" alt='placeholder' className='h-[300px] w-full shadow-md' />
           </main>
           <section className='flex flex-col justify-start items-start text-start'>
           <h1 className='font-medium text-2xl md:text-4xl text-black py-[1.5rem]'>

@@ -2,7 +2,7 @@ const Features = () => {
   return (
     <div className='min-h-screen flex justify-around items-center flex-wrap px-[3rem] md:px-0'>
       <div>
-        <img src={"/image (2).png"} width={500} height={500} className='' alt='features' />
+        <img src={"/image (2).svg"} width={500} height={500} className='' alt='features' />
       </div>
       <div className='flex justify-start flex-col items-start max-w-xl'>
         <h1 className='text-2xl mb-4 md:text-5xl font-medium text-dark-5'>
