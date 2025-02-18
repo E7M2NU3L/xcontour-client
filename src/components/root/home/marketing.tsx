@@ -3,7 +3,8 @@ import { Box } from "lucide-react"
 
 const Marketing = () => {
   return (
-    <div className='flex min-h-[90vh] justify-around max-w-7xl items-center mx-auto md:flex-row flex-col px-[2rem] md:px-0 pb-[4rem] md:pb-0'>
+    <main className="bg-gradient-to-b from-primary/70 to-transparent">
+        <div className='flex min-h-[90vh] justify-around max-w-7xl items-center mx-auto md:flex-row flex-col px-[2rem] md:px-0 pb-[4rem] md:pb-0'>
          <section className='max-w-xl'>
             <h1 className='text-black text-lg pb-2'>
                 simplify
@@ -49,6 +50,7 @@ const Marketing = () => {
             <img src={"/image (1).svg"} alt='' width={500} height={500} />
         </section>
     </div>
+    </main>
   )
 }
 

@@ -1,24 +1,28 @@
 import Contacts from "@/components/root/home/contactus"
 import Cta from "@/components/root/home/cta"
 import Customise from "@/components/root/home/customize"
-import Effortless from "@/components/root/home/effortless"
-import Features from "@/components/root/home/features"
-import Hero from "@/components/root/home/hero"
 import Marketing from "@/components/root/home/marketing"
 import Pricing from "@/components/root/home/pricing"
 import Testimonials from "@/components/root/home/testimonials"
+import { FAQs } from "@/components/root/new_home/FAQs"
+import { FeaturesCards } from "@/components/root/new_home/Features"
+import { HeroSection } from "@/components/root/new_home/Hero"
+import { LogoTicker } from "@/components/root/new_home/LogoTicker"
+import { ProductShowcase } from "@/components/root/new_home/ProductShowcase"
 
 const Home = () => {
   return (
     <div>
-        <Hero />
-        <Features />
+        <HeroSection />
+        <LogoTicker />
+        <FeaturesCards />
+        <ProductShowcase />
         <Marketing />
-        <Effortless />
         <Customise />
         <Pricing />
         <Contacts />
         <Testimonials />
+        <FAQs />
         <Cta />
     </div>
   )
